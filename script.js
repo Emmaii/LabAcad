@@ -31,50 +31,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Typing Animation
-    const typedText1 = document.getElementById('typed-text-1');
-    const typedText2 = document.getElementById('typed-text-2');
+    // Updated Typing Animation - Continuous
+const typedText = document.getElementById('typed-text');
+
+if (typedText) {
+    const phrases = [
+        "Systematic Trading Education",
+        "AI-Powered Trading Signals",
+        "Quantitative Market Analysis",
+        "Disciplined Trade Execution"
+    ];
     
-    if (typedText1 && typedText2) {
-        const text1 = "Systematic Trading";
-        const text2 = "Through Code & Discipline";
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let pauseDuration = 1500;
+    
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
         
-        let charIndex1 = 0;
-        let charIndex2 = 0;
-        let typingSpeed = 100;
-        let pauseDuration = 1000;
-        
-        function typeText1() {
-            if (charIndex1 < text1.length) {
-                typedText1.textContent = text1.substring(0, charIndex1 + 1);
-                charIndex1++;
-                setTimeout(typeText1, typingSpeed);
-            } else {
-                // Start typing second line after a pause
-                setTimeout(() => {
-                    typeText2();
-                }, pauseDuration);
-            }
+        if (isDeleting) {
+            // Deleting text
+            typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            // Typing text
+            typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
         }
         
-        function typeText2() {
-            if (charIndex2 < text2.length) {
-                typedText2.textContent = text2.substring(0, charIndex2 + 1);
-                charIndex2++;
-                setTimeout(typeText2, typingSpeed);
-            } else {
-                // Animation complete - add blinking cursor
-                setTimeout(() => {
-                    const cursor = document.createElement('span');
-                    cursor.className = 'cursor';
-                    typedText2.parentElement.appendChild(cursor);
-                    
-                    // Add blinking animation to cursor
-                    setInterval(() => {
-                        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                    }, 500);
-                }, 500);
-            }
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // Pause at end of phrase
+            typingSpeed = pauseDuration;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next phrase
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
         }
+        
+        setTimeout(typeEffect, typingSpeed);
+    }
+    
+    // Start typing animation after page loads
+    setTimeout(typeEffect, 1000);
+    
+    // Add blinking cursor
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+        setInterval(() => {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 500);
+    }
+}
+
+// Remove the old typing animation code and replace with the above
         
         // Start typing animation after page loads
         setTimeout(typeText1, 1000);
