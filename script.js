@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (typedText) {
         const phrases = [
-            "Systematic Trading Education",
-            "AI-Powered Trading Signals",
-            "Quantitative Market Analysis",
-            "Disciplined Trade Execution",
-            "Learn the System",
-            "Follow the Signals"
+            "Mathematics Meets Trading",
+            "Free Chart Education",
+            "Proprietary Quant Code",
+            "Smart Money Concepts",
+            "Systematic Trading Academy",
+            "Eradicating Forex Scams"
         ];
         
         let phraseIndex = 0;
