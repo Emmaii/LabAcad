@@ -1,14 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Typing animation
+    // Continuous typing animation
     const typedText = document.getElementById('typed-text');
     
     if (typedText) {
         const phrases = [
-            "Gold Trading Specialist",
+            "Learn Gold Trading",
             "Technical Analysis Only",
-            "93% Win Rate on XAUUSD",
-            "Free Smart Money Concepts",
-            "VIP Signals Available"
+            "One-on-One Mentorship",
+            "$50 / ₦80,000"
         ];
         
         let phraseIndex = 0;
