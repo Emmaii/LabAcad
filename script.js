@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Typing animation
+    // Typing animation with gold phrases
     const typedText = document.getElementById('typed-text');
     if (typedText) {
         const phrases = [
-            "One-on-One Mentorship",
+            "Master XAUUSD Trading",
             "Gold Technical Analysis",
+            "One-on-One Mentorship",
             "$50 / ₦80,000"
         ];
         let i = 0, j = 0, isDeleting = false;
