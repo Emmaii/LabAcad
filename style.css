@@ -5,6 +5,8 @@
     --text: #ffffff;
     --text-muted: #a0a0a0;
     --blue: #3b82f6;
+    --gold: #ffd700;          /* gold accent */
+    --gold-dim: #b8860b;      /* darker gold for subtle use */
     --border: #333333;
     --radius: 12px;
     --transition: all 0.3s ease;
@@ -106,12 +108,20 @@ body {
 }
 
 .hero-subtitle {
-    color: var(--blue);
+    color: var(--text-muted);
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
+}
+
+.gold-accent {
+    color: var(--gold);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255,215,0,0.3);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
 }
 
 .hero-title {
@@ -243,6 +253,14 @@ section {
 .course-header h3 {
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
+}
+
+.gold-highlight {
+    color: var(--gold);
+    font-weight: 700;
+    background: linear-gradient(145deg, rgba(255,215,0,0.1), transparent);
+    padding: 0 4px;
+    border-radius: 4px;
 }
 
 .price {
