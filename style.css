@@ -12,6 +12,10 @@
   --radius: 22px;
   --radius-sm: 14px;
   --container: 1120px;
+  --telegram: #0088cc;
+  --telegram-soft: rgba(0, 136, 204, 0.15);
+  --green: #2dd36f;
+  --green-soft: rgba(45, 211, 111, 0.12);
 }
 
 * {
@@ -118,7 +122,8 @@ main {
 .hero-card,
 .info-card,
 .cta-box,
-.lecture-item {
+.lecture-item,
+.track-record-card {
   background: var(--card);
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow);
@@ -162,7 +167,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
 }
 
 .price-box {
@@ -184,6 +189,24 @@ main {
   font-size: 1.65rem;
   font-weight: 800;
   color: #fff;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #e74c3c;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.new-price {
+  color: #fff;
+  font-size: 1.65rem;
+  font-weight: 800;
 }
 
 .hero-actions {
@@ -197,6 +220,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 14px 18px;
   border-radius: 14px;
   font-weight: 700;
@@ -220,6 +244,31 @@ main {
 
 .btn-large {
   min-width: 220px;
+}
+
+/* Referral Banner */
+.referral-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--green-soft);
+  border: 1px solid rgba(45, 211, 111, 0.25);
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  color: #b7f0cc;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.referral-banner strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.referral-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .trust-line {
@@ -275,6 +324,103 @@ main {
   color: var(--muted);
   line-height: 1.7;
   font-size: 0.96rem;
+}
+
+/* Track Record Section */
+.track-record-section {
+  margin-top: 28px;
+}
+
+.track-record-card {
+  border-radius: var(--radius);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-record-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--telegram-soft), transparent 60%);
+  pointer-events: none;
+}
+
+.track-record-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--telegram-soft);
+  border: 1px solid rgba(0, 136, 204, 0.25);
+  color: #34aadc;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.track-record-content h2 {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.track-record-content p {
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0 0 16px;
+  max-width: 55ch;
+}
+
+.btn-track-record {
+  background: var(--telegram);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-track-record:hover {
+  background: #0099dd;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+}
+
+.track-record-stats {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  min-width: 100px;
+}
+
+.stat-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
 .section {
@@ -472,6 +618,16 @@ main {
   .info-grid {
     grid-template-columns: 1fr;
   }
+
+  .track-record-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .track-record-stats {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 640px) {
@@ -497,5 +653,23 @@ main {
 
   .btn-large {
     width: 100%;
+  }
+
+  .track-record-card {
+    padding: 22px;
+  }
+
+  .track-record-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-item {
+    min-width: auto;
+  }
+
+  .referral-banner {
+    flex-direction: column;
+    text-align: center;
   }
 }
