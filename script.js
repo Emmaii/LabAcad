@@ -3,49 +3,43 @@ const whatsappMessage = "Hi I'm interested in learning how to trade Gold profita
 const encodedMessage = encodeURIComponent(whatsappMessage);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-// Videos in reverse order - last video becomes Lecture 1 (Preview)
-// Original order provided: 
-// 1. Finding Bias
-// 2. The 3-Hour Trading Window
-// 3. POI — Where to Buy
-// 4. From Setup to Profit — Real Trade Breakdown
-// 5. Everything Combined — This…
-// 6. Live Trading the Reversal Method
-// Reversed order: 6 becomes Lecture 1 (Preview), then 5, 4, 3, 2, 1
+// Lecture Data - Reversed Order
+// Lecture 1 = Last video (Live Trading the Reversal Method) - PREVIEW
+// Lecture 6 = First video (Finding Bias) - LOCKED
 const lectureData = [
   {
-    title: "Lecture 1 — Live Trading the Reversal Method",
-    desc: "Watch a live trading session demonstrating the reversal method in action.",
+    title: "Live Trading the Reversal Method",
+    desc: "Watch a complete live trading session demonstrating the reversal method in real market conditions.",
     status: "preview",
     videoId: "CICleAnoMXE"
   },
   {
-    title: "Lecture 2 — Everything Combined — This…",
-    desc: "Core lesson locked until purchase.",
+    title: "Everything Combined — This…",
+    desc: "Bringing all concepts together into one comprehensive trading approach.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "Lecture 3 — From Setup to Profit — Real Trade Breakdown",
-    desc: "Core lesson locked until purchase.",
+    title: "From Setup to Profit — Real Trade Breakdown",
+    desc: "Step-by-step analysis of a real trade from entry to exit.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "Lecture 4 — POI — Where to Buy",
-    desc: "Core lesson locked until purchase.",
+    title: "POI — Where to Buy",
+    desc: "Identifying Points of Interest and optimal entry zones.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "Lecture 5 — The 3-Hour Trading Window That Eliminates…",
-    desc: "Core lesson locked until purchase.",
+    title: "The 3-Hour Trading Window That Eliminates…",
+    desc: "Learn the specific time window that filters out noise and improves probability.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "Lecture 6 — Finding Bias",
-    desc: "Core lesson locked until purchase.",
+    title: "Finding Bias",
+    desc: "Master the art of determining market direction and bias identification.",
     status: "locked",
     videoId: ""
   }
@@ -79,7 +73,7 @@ function createLectureItem(item, index) {
 
   const title = document.createElement("div");
   title.className = "lecture-title";
-  title.textContent = item.title;
+  title.textContent = `Lecture ${index + 1} — ${item.title}`;
 
   const desc = document.createElement("div");
   desc.className = "lecture-meta";
@@ -96,7 +90,7 @@ function createLectureItem(item, index) {
 
   const badge = document.createElement("span");
   badge.className = `badge ${item.status}`;
-  badge.textContent = item.status === "preview" ? "Preview" : "Locked";
+  badge.textContent = item.status === "preview" ? "🔓 Preview" : "🔒 Locked";
 
   actions.appendChild(badge);
 
@@ -104,9 +98,9 @@ function createLectureItem(item, index) {
     const playButton = document.createElement("button");
     playButton.className = "play-btn primary";
     playButton.type = "button";
-    playButton.textContent = "Watch Preview";
+    playButton.textContent = "▶ Watch Preview";
     playButton.addEventListener("click", () => {
-      previewVideo.src = `https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1`;
+      previewVideo.src = `https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1&autoplay=0`;
       document.querySelector(".hero").scrollIntoView({ behavior: "smooth", block: "start" });
     });
     actions.appendChild(playButton);
@@ -114,7 +108,7 @@ function createLectureItem(item, index) {
     const lockButton = document.createElement("button");
     lockButton.className = "play-btn";
     lockButton.type = "button";
-    lockButton.innerHTML = `<span class="lock-icon">🔒</span> Locked`;
+    lockButton.innerHTML = `🔒 Unlock with Purchase`;
     lockButton.addEventListener("click", () => {
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
@@ -128,6 +122,7 @@ function createLectureItem(item, index) {
 }
 
 function renderLectures() {
+  if (!lectureList) return;
   lectureList.innerHTML = "";
   lectureData.forEach((item, index) => {
     lectureList.appendChild(createLectureItem(item, index));
@@ -135,11 +130,13 @@ function renderLectures() {
 }
 
 function initPreview() {
-  // Set the first lecture (preview) as the initial video
+  if (!previewVideo) return;
   previewVideo.src = `https://www.youtube.com/embed/${lectureData[0].videoId}?rel=0&modestbranding=1`;
 }
 
-yearEl.textContent = new Date().getFullYear();
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 setWhatsAppLinks();
 renderLectures();
