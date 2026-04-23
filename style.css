@@ -441,10 +441,6 @@ main {
   color: #cfd6e2;
 }
 
-.lock-icon {
-  font-size: 1rem;
-}
-
 .cta-section {
   padding-bottom: 8px;
 }
@@ -499,4 +495,4 @@ main {
   .btn-large {
     width: 100%;
   }
-} 
+}
