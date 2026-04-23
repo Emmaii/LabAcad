@@ -3,8 +3,6 @@ const whatsappMessage = "Hi I'm interested in learning how to trade Gold profita
 const encodedMessage = encodeURIComponent(whatsappMessage);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-// CORRECT ORDER: Lecture 1 to Lecture 6 (top to bottom)
-// Only Lecture 1 (Finding Bias) is unlocked as preview
 const lectureData = [
   {
     title: "Finding Bias",
@@ -128,7 +126,6 @@ function renderLectures() {
 }
 
 function initPreview() {
-  // Set Lecture 1 (Finding Bias) as the preview video
   previewVideo.src = `https://www.youtube.com/embed/${lectureData[0].videoId}?rel=0&modestbranding=1`;
 }
 
