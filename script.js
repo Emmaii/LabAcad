@@ -3,39 +3,51 @@ const whatsappMessage = "Hi I'm interested in learning how to trade Gold profita
 const encodedMessage = encodeURIComponent(whatsappMessage);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-// Videos in reverse order - last video becomes Lecture 1
-// Original order from user: q0Pbg85AHQU, -wHaZyAtZ6M, 7rDJikdlBwY, bI4NIjkAC34, RraPVl3lPg0
-// Reversed: RraPVl3lPg0 (Lecture 1), bI4NIjkAC34 (2), 7rDJikdlBwY (3), -wHaZyAtZ6M (4), q0Pbg85AHQU (5)
+// Videos in reverse order - last video becomes Lecture 1 (Preview)
+// Original order provided: 
+// 1. Finding Bias
+// 2. The 3-Hour Trading Window
+// 3. POI — Where to Buy
+// 4. From Setup to Profit — Real Trade Breakdown
+// 5. Everything Combined — This…
+// 6. Live Trading the Reversal Method
+// Reversed order: 6 becomes Lecture 1 (Preview), then 5, 4, 3, 2, 1
 const lectureData = [
   {
-    title: "Lecture 1 — Final Setup & Full Preview",
-    desc: "This is the preview lecture. It uses the last video you shared.",
+    title: "Lecture 1 — Live Trading the Reversal Method",
+    desc: "Watch a live trading session demonstrating the reversal method in action.",
     status: "preview",
-    videoId: "RraPVl3lPg0"
+    videoId: "CICleAnoMXE"
   },
   {
-    title: "Lecture 2 — Core Strategy",
+    title: "Lecture 2 — Everything Combined — This…",
     desc: "Core lesson locked until purchase.",
     status: "locked",
-    videoId: "bI4NIjkAC34"
+    videoId: ""
   },
   {
-    title: "Lecture 3 — Advanced Concepts",
+    title: "Lecture 3 — From Setup to Profit — Real Trade Breakdown",
     desc: "Core lesson locked until purchase.",
     status: "locked",
-    videoId: "7rDJikdlBwY"
+    videoId: ""
   },
   {
-    title: "Lecture 4 — Market Structure",
+    title: "Lecture 4 — POI — Where to Buy",
     desc: "Core lesson locked until purchase.",
     status: "locked",
-    videoId: "-wHaZyAtZ6M"
+    videoId: ""
   },
   {
-    title: "Lecture 5 — Foundation",
+    title: "Lecture 5 — The 3-Hour Trading Window That Eliminates…",
     desc: "Core lesson locked until purchase.",
     status: "locked",
-    videoId: "q0Pbg85AHQU"
+    videoId: ""
+  },
+  {
+    title: "Lecture 6 — Finding Bias",
+    desc: "Core lesson locked until purchase.",
+    status: "locked",
+    videoId: ""
   }
 ];
 
