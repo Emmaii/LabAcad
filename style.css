@@ -13,7 +13,7 @@
   --radius-sm: 14px;
   --container: 1120px;
   --telegram: #0088cc;
-  --telegram-soft: rgba(0, 136, 204, 0.15);
+  --telegram-soft: rgba(0, 136, 204, 0.12);
   --green: #2dd36f;
   --green-soft: rgba(45, 211, 111, 0.12);
 }
@@ -50,6 +50,7 @@ a {
   z-index: -1;
 }
 
+/* ========== TOP BAR ========== */
 .topbar {
   max-width: var(--container);
   margin: 0 auto;
@@ -75,17 +76,19 @@ a {
   display: grid;
   place-items: center;
   font-weight: 800;
+  font-size: 1.2rem;
   box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
 }
 
 .brand-name {
   font-weight: 800;
   font-size: 1rem;
+  color: #fff;
 }
 
 .brand-sub {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-top: 2px;
 }
 
@@ -96,7 +99,8 @@ a {
   border: 1px solid rgba(212, 175, 55, 0.25);
   color: var(--text);
   font-weight: 600;
-  transition: transform 0.2s ease, background 0.2s ease;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
 .top-cta:hover {
@@ -104,12 +108,14 @@ a {
   background: rgba(212, 175, 55, 0.18);
 }
 
+/* ========== MAIN LAYOUT ========== */
 main {
   max-width: var(--container);
   margin: 0 auto;
   padding: 28px 20px 56px;
 }
 
+/* ========== HERO SECTION ========== */
 .hero {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -144,15 +150,17 @@ main {
   background: var(--gold-soft);
   color: #f6e7a6;
   border: 1px solid rgba(212, 175, 55, 0.22);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   margin-bottom: 18px;
 }
 
 .hero h1 {
-  font-size: clamp(2.1rem, 4vw, 4.15rem);
-  line-height: 1.05;
+  font-size: clamp(2.1rem, 4vw, 3.8rem);
+  line-height: 1.08;
   margin: 0 0 16px;
   letter-spacing: -0.04em;
+  color: #fff;
 }
 
 .hero-text {
@@ -163,6 +171,7 @@ main {
   margin: 0 0 26px;
 }
 
+/* ========== PRICE ROW ========== */
 .price-row {
   display: flex;
   flex-wrap: wrap;
@@ -181,7 +190,7 @@ main {
 
 .price-label {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   margin-bottom: 6px;
 }
 
@@ -198,9 +207,9 @@ main {
 .old-price {
   text-decoration: line-through;
   color: #e74c3c;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .new-price {
@@ -209,6 +218,7 @@ main {
   font-weight: 800;
 }
 
+/* ========== BUTTONS ========== */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -221,10 +231,14 @@ main {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 18px;
+  padding: 14px 20px;
   border-radius: 14px;
   font-weight: 700;
-  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
 }
 
 .btn:hover {
@@ -232,8 +246,12 @@ main {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--gold), #a98517);
+  background: linear-gradient(135deg, var(--gold), #b8931a);
   color: #131313;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
 .btn-secondary {
@@ -242,11 +260,15 @@ main {
   color: var(--text);
 }
 
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .btn-large {
   min-width: 220px;
 }
 
-/* Referral Banner */
+/* ========== REFERRAL BANNER ========== */
 .referral-banner {
   display: flex;
   align-items: center;
@@ -257,7 +279,7 @@ main {
   border-radius: var(--radius-sm);
   margin-bottom: 18px;
   color: #b7f0cc;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -273,17 +295,17 @@ main {
 
 .trust-line {
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
 
+/* ========== HERO CARD (VIDEO PREVIEW) ========== */
 .hero-card {
   border-radius: calc(var(--radius) + 6px);
   padding: 18px;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
 }
 
 .hero-card-header {
@@ -323,21 +345,20 @@ main {
   margin-top: 14px;
   color: var(--muted);
   line-height: 1.7;
-  font-size: 0.96rem;
+  font-size: 0.94rem;
 }
 
-/* Track Record Section */
+/* ========== TRACK RECORD SECTION ========== */
 .track-record-section {
   margin-top: 28px;
 }
 
 .track-record-card {
   border-radius: var(--radius);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 28px;
+  padding: 28px 32px;
+  display: flex;
   align-items: center;
+  gap: 24px;
   position: relative;
   overflow: hidden;
 }
@@ -351,29 +372,35 @@ main {
 }
 
 .track-record-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: var(--telegram-soft);
   border: 1px solid rgba(0, 136, 204, 0.25);
   color: #34aadc;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
+.track-record-content {
+  flex: 1;
+}
+
 .track-record-content h2 {
-  margin: 0 0 8px;
-  font-size: 1.3rem;
+  margin: 0 0 6px;
+  font-size: 1.2rem;
   letter-spacing: -0.02em;
   color: #fff;
 }
 
 .track-record-content p {
   color: var(--muted);
-  line-height: 1.75;
-  margin: 0 0 16px;
-  max-width: 55ch;
+  line-height: 1.7;
+  margin: 0 0 14px;
+  font-size: 0.94rem;
+  max-width: 50ch;
 }
 
 .btn-track-record {
@@ -381,11 +408,12 @@ main {
   color: #fff;
   border: none;
   font-weight: 600;
-  padding: 12px 20px;
+  font-size: 0.9rem;
+  padding: 11px 18px;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: all 0.2s ease;
 }
 
@@ -397,21 +425,21 @@ main {
 
 .track-record-stats {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   flex-shrink: 0;
 }
 
 .stat-item {
   text-align: center;
-  padding: 10px 16px;
+  padding: 12px 18px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  min-width: 100px;
+  min-width: 90px;
 }
 
 .stat-value {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 4px;
@@ -419,10 +447,11 @@ main {
 
 .stat-label {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 
+/* ========== SECTIONS ========== */
 .section {
   margin-top: 28px;
 }
@@ -433,13 +462,8 @@ main {
   gap: 18px;
 }
 
-.info-card,
-.cta-box,
-.lecture-item {
-  border-radius: var(--radius);
-}
-
 .info-card {
+  border-radius: var(--radius);
   padding: 22px;
 }
 
@@ -447,20 +471,21 @@ main {
 .section-heading h2,
 .cta-box h2 {
   margin: 0 0 10px;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   letter-spacing: -0.02em;
+  color: #fff;
 }
 
 .info-card p,
 .section-sub,
-.cta-box p,
-.lecture-desc,
-.footer p {
+.cta-box p {
   color: var(--muted);
   line-height: 1.75;
   margin: 0;
+  font-size: 0.94rem;
 }
 
+/* ========== COURSE OUTLINE ========== */
 .section-heading {
   margin-bottom: 18px;
 }
@@ -488,6 +513,7 @@ main {
   padding: 18px 20px;
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius);
 }
 
 .lecture-item::before {
@@ -516,16 +542,18 @@ main {
   place-items: center;
   font-weight: 800;
   color: #f5d872;
+  font-size: 0.95rem;
 }
 
 .lecture-title {
   font-weight: 700;
   margin-bottom: 4px;
+  color: #fff;
 }
 
 .lecture-meta {
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
 }
 
 .lecture-actions {
@@ -539,7 +567,7 @@ main {
 .badge {
   padding: 10px 14px;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 
@@ -561,10 +589,11 @@ main {
   padding: 11px 14px;
   border-radius: 12px;
   font-weight: 700;
+  font-size: 0.9rem;
   font-family: inherit;
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .play-btn:hover {
@@ -577,6 +606,10 @@ main {
   color: #131313;
 }
 
+.play-btn.primary:hover {
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
 .locked-item {
   opacity: 0.72;
 }
@@ -586,10 +619,7 @@ main {
   color: #cfd6e2;
 }
 
-.lock-icon {
-  font-size: 1rem;
-}
-
+/* ========== CTA SECTION ========== */
 .cta-section {
   padding-bottom: 8px;
 }
@@ -597,12 +627,14 @@ main {
 .cta-box {
   text-align: center;
   padding: 30px 22px;
+  border-radius: var(--radius);
 }
 
 .cta-box p {
   margin-bottom: 18px;
 }
 
+/* ========== FOOTER ========== */
 .footer {
   max-width: var(--container);
   margin: 0 auto;
@@ -610,6 +642,12 @@ main {
   text-align: center;
 }
 
+.footer p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 920px) {
   .hero {
     grid-template-columns: 1fr;
@@ -620,13 +658,13 @@ main {
   }
 
   .track-record-card {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .track-record-stats {
+    width: 100%;
     justify-content: flex-start;
-    flex-wrap: wrap;
   }
 }
 
@@ -656,20 +694,25 @@ main {
   }
 
   .track-record-card {
-    padding: 22px;
+    padding: 20px;
   }
 
   .track-record-stats {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .stat-item {
-    min-width: auto;
+    min-width: 80px;
+    padding: 10px 14px;
   }
 
   .referral-banner {
     flex-direction: column;
     text-align: center;
+  }
+
+  .price-row {
+    flex-direction: column;
   }
 }
