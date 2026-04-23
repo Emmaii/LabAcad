@@ -3,7 +3,6 @@ const whatsappMessage = "Hi I'm interested in learning how to trade Gold profita
 const encodedMessage = encodeURIComponent(whatsappMessage);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-// Lecture 1 (Finding Bias) is the ONLY preview - uses the correct link
 const lectureData = [
   {
     title: "Finding Bias",
@@ -98,9 +97,7 @@ function createLectureItem(item, index) {
     playButton.type = "button";
     playButton.textContent = "Watch Preview";
     playButton.addEventListener("click", () => {
-      // Update the preview video with Lecture 1
       previewVideo.src = `https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1`;
-      // Scroll to the preview section at the top of the page
       document.getElementById("previewSection").scrollIntoView({ behavior: "smooth", block: "start" });
     });
     actions.appendChild(playButton);
@@ -129,7 +126,6 @@ function renderLectures() {
 }
 
 function initPreview() {
-  // Load Lecture 1 (Finding Bias) with the correct video ID
   previewVideo.src = `https://www.youtube.com/embed/${lectureData[0].videoId}?rel=0&modestbranding=1`;
 }
 
