@@ -1,7 +1,16 @@
 const whatsappNumber = "2347031763615";
-const whatsappMessage = "Hi I'm interested in learning how to trade Gold profitable and consistently";
-const encodedMessage = encodeURIComponent(whatsappMessage);
-const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+const baseMessage = "Hi I'm interested in learning how to trade Gold profitable and consistently";
+
+function buildWhatsAppUrl(referralCode = "") {
+  let message = baseMessage;
+  if (referralCode.trim() !== "") {
+    message += `%0A%0AReferral Code: ${encodeURIComponent(referralCode.trim())}`;
+  }
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+}
+
+const whatsappUrl = buildWhatsAppUrl();
 
 const lectureData = [
   {
@@ -49,9 +58,28 @@ const whatsappHero = document.getElementById("whatsappHero");
 const whatsappBottom = document.getElementById("whatsappBottom");
 const yearEl = document.getElementById("year");
 
+function promptReferral() {
+  const referralCode = prompt(
+    "💰 REFERRAL PROGRAM 💰\n\nGot a friend who referred you?\nEnter their WhatsApp number below and they earn ₦5,000!\n\n(Leave empty if you don't have a referral code)",
+    ""
+  );
+  return referralCode || "";
+}
+
+function openWhatsAppWithReferral(link) {
+  const referralCode = promptReferral();
+  const url = buildWhatsAppUrl(referralCode);
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
 function setWhatsAppLinks() {
   [whatsappTop, whatsappHero, whatsappBottom].forEach((link) => {
-    if (link) link.href = whatsappUrl;
+    if (link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        openWhatsAppWithReferral(this);
+      });
+    }
   });
 }
 
@@ -107,7 +135,7 @@ function createLectureItem(item, index) {
     lockButton.type = "button";
     lockButton.innerHTML = `<span class="lock-icon">🔒</span> Locked`;
     lockButton.addEventListener("click", () => {
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      openWhatsAppWithReferral(lockButton);
     });
     actions.appendChild(lockButton);
   }
