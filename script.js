@@ -3,25 +3,18 @@ const whatsappMessage = "Hi I'm interested in learning how to trade Gold profita
 const encodedMessage = encodeURIComponent(whatsappMessage);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-// Lecture Data - Reversed Order
-// Lecture 1 = Last video (Live Trading the Reversal Method) - PREVIEW
-// Lecture 6 = First video (Finding Bias) - LOCKED
+// CORRECT ORDER: Lecture 1 to Lecture 6 (top to bottom)
+// Only Lecture 6 (Live Trading) is unlocked as preview
 const lectureData = [
   {
-    title: "Live Trading the Reversal Method",
-    desc: "Watch a complete live trading session demonstrating the reversal method in real market conditions.",
-    status: "preview",
-    videoId: "CICleAnoMXE"
-  },
-  {
-    title: "Everything Combined — This…",
-    desc: "Bringing all concepts together into one comprehensive trading approach.",
+    title: "Finding Bias",
+    desc: "Master the art of determining market direction and bias identification.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "From Setup to Profit — Real Trade Breakdown",
-    desc: "Step-by-step analysis of a real trade from entry to exit.",
+    title: "The 3-Hour Trading Window That Eliminates Bad Trades",
+    desc: "Learn the specific time window that filters out noise and improves probability.",
     status: "locked",
     videoId: ""
   },
@@ -32,16 +25,22 @@ const lectureData = [
     videoId: ""
   },
   {
-    title: "The 3-Hour Trading Window That Eliminates…",
-    desc: "Learn the specific time window that filters out noise and improves probability.",
+    title: "From Setup to Profit — Real Trade Breakdown",
+    desc: "Step-by-step analysis of a real trade from entry to exit.",
     status: "locked",
     videoId: ""
   },
   {
-    title: "Finding Bias",
-    desc: "Master the art of determining market direction and bias identification.",
+    title: "Everything Combined — This is how to Trade Daily",
+    desc: "Bringing all concepts together into one comprehensive trading approach.",
     status: "locked",
     videoId: ""
+  },
+  {
+    title: "Live Trading the Reversal Method",
+    desc: "Watch a complete live trading session demonstrating the reversal method in real market conditions.",
+    status: "preview",
+    videoId: "CICleAnoMXE"
   }
 ];
 
@@ -73,7 +72,7 @@ function createLectureItem(item, index) {
 
   const title = document.createElement("div");
   title.className = "lecture-title";
-  title.textContent = `Lecture ${index + 1} — ${item.title}`;
+  title.textContent = item.title;
 
   const desc = document.createElement("div");
   desc.className = "lecture-meta";
@@ -131,7 +130,11 @@ function renderLectures() {
 
 function initPreview() {
   if (!previewVideo) return;
-  previewVideo.src = `https://www.youtube.com/embed/${lectureData[0].videoId}?rel=0&modestbranding=1`;
+  // Find the preview lecture to display
+  const previewLecture = lectureData.find(lecture => lecture.status === "preview");
+  if (previewLecture) {
+    previewVideo.src = `https://www.youtube.com/embed/${previewLecture.videoId}?rel=0&modestbranding=1`;
+  }
 }
 
 if (yearEl) {
