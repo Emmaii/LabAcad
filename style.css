@@ -308,7 +308,7 @@ main {
   font-size: 0.94rem;
 }
 
-/* ========== LIVE SIGNALS SECTION ========== */
+/* ========== LIVE SIGNALS ========== */
 .live-signals-section {
   margin-top: 28px;
 }
@@ -364,14 +364,8 @@ main {
 }
 
 @keyframes pulse-ring {
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
 }
 
 .live-pair {
@@ -395,15 +389,16 @@ main {
 
 .tradingview-widget-container {
   width: 100%;
+  height: 400px;
 }
 
-.tradingview-widget-container div {
+.tradingview-widget-container > div {
   width: 100% !important;
+  height: 400px !important;
 }
 
 .signals-info {
   display: grid;
-  gap: 0;
 }
 
 .signal-card {
@@ -424,10 +419,10 @@ main {
 
 .signal-direction {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.82rem;
+  font-weight: 700;
+  font-size: 0.8rem;
   letter-spacing: 0.04em;
   margin-bottom: 14px;
 }
@@ -436,12 +431,6 @@ main {
   background: rgba(45, 211, 111, 0.15);
   border: 1px solid rgba(45, 211, 111, 0.3);
   color: #5ce68c;
-}
-
-.signal-direction.short {
-  background: rgba(231, 76, 60, 0.15);
-  border: 1px solid rgba(231, 76, 60, 0.3);
-  color: #e74c3c;
 }
 
 .signal-details {
@@ -465,21 +454,13 @@ main {
 .signal-value {
   color: #fff;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-family: "SF Mono", "Fira Code", "Consolas", monospace;
 }
 
-.signal-value.sl {
-  color: #e74c3c;
-}
-
-.signal-value.tp {
-  color: #5ce68c;
-}
-
-.signal-value.rr {
-  color: #f0df94;
-}
+.signal-value.sl { color: #ff6b6b; }
+.signal-value.tp { color: #5ce68c; }
+.signal-value.rr { color: #f0df94; }
 
 .signal-note {
   color: var(--muted);
@@ -489,7 +470,7 @@ main {
   border-top: 1px solid var(--line);
 }
 
-/* ========== TRACK RECORD SECTION ========== */
+/* ========== TRACK RECORD ========== */
 .track-record-section {
   margin-top: 28px;
 }
@@ -626,9 +607,10 @@ main {
   font-weight: 700;
 }
 
+/* ========== LECTURES ========== */
 .lecture-list {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .lecture-item {
@@ -636,17 +618,17 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 20px;
+  padding: 16px 20px;
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: 18px;
 }
 
 .lecture-item::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.06), transparent 35%);
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.05), transparent 30%);
   pointer-events: none;
 }
 
@@ -660,173 +642,144 @@ main {
 }
 
 .lecture-index {
-  min-width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  min-width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   display: grid;
   place-items: center;
-  font-weight: 800;
-  color: #f5d872;
-  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e0c860;
+  font-size: 0.9rem;
 }
 
 .lecture-title {
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 3px;
   color: #fff;
+  font-size: 0.95rem;
 }
 
 .lecture-meta {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .lecture-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
 }
 
-.badge {
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
+/* ========== CLEAN BUTTONS ========== */
 
-.badge.preview {
-  background: rgba(45, 211, 111, 0.15);
-  border: 1px solid rgba(45, 211, 111, 0.3);
-  color: #5ce68c;
-}
-
-.badge.locked {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #9aa0b0;
-}
-
-/* ========== BEAUTIFUL BUTTONS ========== */
-
-.play-btn {
-  border: none;
-  cursor: pointer;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.85rem;
+.btn-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.83rem;
   font-family: inherit;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
   white-space: nowrap;
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, #d4af37, #b8931a);
+  color: #111;
   letter-spacing: 0.01em;
-  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-preview:hover {
+  background: linear-gradient(135deg, #e0c860, #c9a520);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}
+
+.btn-locked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.83rem;
+  font-family: inherit;
+  cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #9aa0b0;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background: transparent;
+  color: #8a8f9c;
+  letter-spacing: 0.01em;
 }
 
-.play-btn:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #c0c6d0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.btn-locked:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #b0b6c0;
+  transform: translateY(-1px);
 }
 
-/* WATCH PREVIEW BUTTON - Gold Animated */
-.play-btn.primary {
-  background: linear-gradient(135deg, #d4af37 0%, #f0cc3e 30%, #c59b1f 70%, #a98517 100%) !important;
-  background-size: 200% 200% !important;
-  color: #1a1a1a !important;
-  border: none !important;
-  font-weight: 700 !important;
-  padding: 10px 20px !important;
-  animation: goldShimmer 3s ease infinite !important;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-}
-
-.play-btn.primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-  animation: goldShimmer 1.5s ease infinite !important;
-}
-
-.play-btn.primary:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-}
-
-@keyframes goldShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ASSIGNMENT BUTTON - Ice Blue Frosted */
 .btn-assignment {
-  background: linear-gradient(135deg, rgba(148, 197, 252, 0.1) 0%, rgba(100, 160, 230, 0.06) 100%) !important;
-  border: 1px solid rgba(148, 197, 252, 0.25) !important;
-  color: #8ab8f0 !important;
-  padding: 10px 16px !important;
-  border-radius: 12px !important;
-  font-weight: 600 !important;
-  font-size: 0.84rem !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 7px !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  white-space: nowrap !important;
-  cursor: pointer !important;
-  font-family: inherit !important;
-  letter-spacing: 0.01em !important;
-  backdrop-filter: blur(4px) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.btn-assignment::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: -100% !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(90deg, transparent, rgba(148, 197, 252, 0.1), transparent) !important;
-  transition: left 0.5s ease !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid rgba(148, 197, 252, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background: transparent;
+  color: #7aafe8;
+  letter-spacing: 0.01em;
 }
 
 .btn-assignment:hover {
-  background: linear-gradient(135deg, rgba(148, 197, 252, 0.18) 0%, rgba(100, 160, 230, 0.12) 100%) !important;
-  border-color: rgba(148, 197, 252, 0.45) !important;
-  color: #b4d6ff !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 20px rgba(100, 160, 230, 0.2), 0 0 0 1px rgba(148, 197, 252, 0.1) !important;
+  border-color: rgba(148, 197, 252, 0.4);
+  background: rgba(148, 197, 252, 0.06);
+  color: #a0ccff;
+  transform: translateY(-1px);
 }
 
-.btn-assignment:hover::before {
-  left: 100% !important;
+.badge-status {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
-.btn-assignment:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 2px 8px rgba(100, 160, 230, 0.15) !important;
+.badge-status.preview {
+  background: rgba(45, 211, 111, 0.12);
+  border: 1px solid rgba(45, 211, 111, 0.25);
+  color: #5ce68c;
+}
+
+.badge-status.locked {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #8a8f9c;
 }
 
 .locked-item {
-  opacity: 0.72;
+  opacity: 0.7;
 }
 
 .locked-item .lecture-index {
-  background: rgba(255, 255, 255, 0.04);
-  color: #cfd6e2;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #9aa0b0;
 }
 
 .cta-section {
