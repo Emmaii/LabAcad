@@ -121,10 +121,12 @@
       var actions = document.createElement("div");
       actions.className = "lecture-actions";
 
+      // Assignment button
       var assignmentBtn = document.createElement("button");
       assignmentBtn.className = "btn-assignment";
       assignmentBtn.type = "button";
-      assignmentBtn.textContent = "📄 Assignment";
+      assignmentBtn.textContent = "📄";
+      assignmentBtn.title = "Download Assignment";
       assignmentBtn.onclick = (function(lectureTitle, assignmentText) {
         return function() {
           downloadAssignment(lectureTitle, assignmentText);
@@ -132,16 +134,18 @@
       })(item.title, item.assignmentText);
       actions.appendChild(assignmentBtn);
 
+      // Status badge
       var badge = document.createElement("span");
-      badge.className = "badge " + item.status;
-      badge.textContent = item.status === "preview" ? "Preview" : "Locked";
+      badge.className = "badge-status " + item.status;
+      badge.textContent = item.status === "preview" ? "Free" : "Locked";
       actions.appendChild(badge);
 
+      // Action button
       if (item.status === "preview") {
         var playButton = document.createElement("button");
-        playButton.className = "play-btn primary";
+        playButton.className = "btn-preview";
         playButton.type = "button";
-        playButton.textContent = "▶ Watch Preview";
+        playButton.textContent = "▶ Watch";
         playButton.onclick = (function(videoId) {
           return function() {
             var previewVideo = document.getElementById("previewVideo");
@@ -157,9 +161,9 @@
         actions.appendChild(playButton);
       } else {
         var lockButton = document.createElement("button");
-        lockButton.className = "play-btn";
+        lockButton.className = "btn-locked";
         lockButton.type = "button";
-        lockButton.textContent = "🔒 Locked";
+        lockButton.textContent = "🔒 Unlock";
         lockButton.onclick = function() {
           openWhatsAppWithReferral();
         };
