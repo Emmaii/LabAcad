@@ -175,15 +175,23 @@
     var el = document.getElementById("heroTitle");
     if (!el) return;
 
-    var original = text;
     el.textContent = "";
+    el.style.borderRight = "3px solid #d4af37";
+    el.style.display = "inline-block";
+    el.style.paddingRight = "4px";
+
     var i = 0;
 
     function typing() {
-      if (i < original.length) {
-        el.textContent += original.charAt(i);
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
         i++;
-        setTimeout(typing, 30);
+        setTimeout(typing, 35);
+      } else {
+        // Blink cursor after typing
+        setInterval(function() {
+          el.style.borderRightColor = el.style.borderRightColor === "transparent" ? "#d4af37" : "transparent";
+        }, 500);
       }
     }
 
