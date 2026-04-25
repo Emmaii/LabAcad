@@ -14,8 +14,6 @@
   --container: 1120px;
   --telegram: #0088cc;
   --telegram-soft: rgba(0, 136, 204, 0.12);
-  --green: #2dd36f;
-  --green-soft: rgba(45, 211, 111, 0.12);
 }
 
 * {
@@ -390,7 +388,7 @@ main {
   box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
 }
 
-/* ========== SECTIONS ========== */
+/* ========== INFO CARDS ========== */
 .section {
   margin-top: 28px;
 }
@@ -589,10 +587,6 @@ main {
   background: rgba(255, 255, 255, 0.09);
   color: #b4d6ff;
   transform: translateY(-1px);
-}
-
-.btn-assignment svg {
-  flex-shrink: 0;
 }
 
 .locked-item {
