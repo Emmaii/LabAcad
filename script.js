@@ -124,7 +124,7 @@
       var assignmentBtn = document.createElement("button");
       assignmentBtn.className = "btn-assignment";
       assignmentBtn.type = "button";
-      assignmentBtn.innerHTML = '📄 Assignment';
+      assignmentBtn.textContent = "📄 Assignment";
       assignmentBtn.onclick = (function(lectureTitle, assignmentText) {
         return function() {
           downloadAssignment(lectureTitle, assignmentText);
@@ -159,7 +159,7 @@
         var lockButton = document.createElement("button");
         lockButton.className = "play-btn";
         lockButton.type = "button";
-        lockButton.innerHTML = '🔒 Locked';
+        lockButton.textContent = "🔒 Locked";
         lockButton.onclick = function() {
           openWhatsAppWithReferral();
         };
