@@ -1,18 +1,18 @@
-const whatsappNumber = "2347031763615";
-const baseMessage = "Hi I'm interested in learning how to trade Gold profitable and consistently";
+// WhatsApp Configuration
+var whatsappNumber = "2347031763615";
+var baseMessage = "Hi I'm interested in learning how to trade Gold profitable and consistently";
 
-function buildWhatsAppUrl(referralCode = "") {
-  let message = baseMessage;
+function buildWhatsAppUrl(referralCode) {
+  referralCode = referralCode || "";
+  var message = baseMessage;
   if (referralCode.trim() !== "") {
-    message += `%0A%0AReferral Code: ${encodeURIComponent(referralCode.trim())}`;
+    message += "%0A%0AReferral Code: " + encodeURIComponent(referralCode.trim());
   }
-  const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+  return "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
 }
 
-const whatsappUrl = buildWhatsAppUrl();
-
-const lectureData = [
+// Lecture Data
+var lectureData = [
   {
     title: "Finding Bias",
     desc: "Master the art of determining market direction and bias identification.",
@@ -46,7 +46,7 @@ const lectureData = [
     desc: "Bringing all concepts together into one comprehensive trading approach.",
     status: "locked",
     videoId: "",
-    assignmentText: "Assignment: Daily Trading Routine\n\n1. Create a pre-market checklist based on all previous lectures.\n2. Practice your full routine for 5 trading days.\n3. Each day: check bias → wait for the 3-hour window → identify POI → look for entry.\n4. Journal every trade idea, even if you don't enter.\n5. Rate your discipline out of 10 each day.\n6. Write a summary of what improved and what needs work."
+    assignmentText: "Assignment: Daily Trading Routine\n\n1. Create a pre-market checklist based on all previous lectures.\n2. Practice your full routine for 5 trading days.\n3. Each day: check bias, wait for the 3-hour window, identify POI, look for entry.\n4. Journal every trade idea, even if you don't enter.\n5. Rate your discipline out of 10 each day.\n6. Write a summary of what improved and what needs work."
   },
   {
     title: "Live Trading the Reversal Method",
@@ -57,145 +57,164 @@ const lectureData = [
   }
 ];
 
-const lectureList = document.getElementById("lectureList");
-const previewVideo = document.getElementById("previewVideo");
-const whatsappTop = document.getElementById("whatsappTop");
-const whatsappHero = document.getElementById("whatsappHero");
-const whatsappBottom = document.getElementById("whatsappBottom");
-const yearEl = document.getElementById("year");
+// Wait for DOM to be ready
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // Get DOM elements
+  var lectureList = document.getElementById("lectureList");
+  var previewVideo = document.getElementById("previewVideo");
+  var whatsappTop = document.getElementById("whatsappTop");
+  var whatsappHero = document.getElementById("whatsappHero");
+  var whatsappBottom = document.getElementById("whatsappBottom");
+  var yearEl = document.getElementById("year");
 
-function promptReferral() {
-  const referralCode = prompt(
-    "💰 REFERRAL PROGRAM 💰\n\nGot a friend who referred you?\nEnter their WhatsApp number below and they earn ₦5,000!\n\n(Leave empty if you don't have a referral code)",
-    ""
-  );
-  return referralCode || "";
-}
-
-function openWhatsAppWithReferral(link) {
-  const referralCode = promptReferral();
-  const url = buildWhatsAppUrl(referralCode);
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
-function setWhatsAppLinks() {
-  [whatsappTop, whatsappHero, whatsappBottom].forEach((link) => {
-    if (link) {
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
-        openWhatsAppWithReferral(this);
-      });
-    }
-  });
-}
-
-function downloadAssignment(lectureTitle, assignmentText) {
-  const content = `Lab Acad Gold Mastery\n${lectureTitle}\n\n${assignmentText}\n\n---\n© Lab Acad Gold Mastery`;
-  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${lectureTitle.replace(/[^a-zA-Z0-9]/g, "_")}_Assignment.txt`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function createLectureItem(item, index) {
-  const row = document.createElement("div");
-  row.className = `lecture-item ${item.status === "locked" ? "locked-item" : ""}`;
-
-  const main = document.createElement("div");
-  main.className = "lecture-main";
-
-  const indexBox = document.createElement("div");
-  indexBox.className = "lecture-index";
-  indexBox.textContent = index + 1;
-
-  const textWrap = document.createElement("div");
-
-  const title = document.createElement("div");
-  title.className = "lecture-title";
-  title.textContent = item.title;
-
-  const desc = document.createElement("div");
-  desc.className = "lecture-meta";
-  desc.textContent = item.desc;
-
-  textWrap.appendChild(title);
-  textWrap.appendChild(desc);
-
-  main.appendChild(indexBox);
-  main.appendChild(textWrap);
-
-  const actions = document.createElement("div");
-  actions.className = "lecture-actions";
-
-  // Assignment button - always unlocked, downloads the assignment
-  const assignmentBtn = document.createElement("button");
-  assignmentBtn.className = "btn-assignment";
-  assignmentBtn.type = "button";
-  assignmentBtn.innerHTML = `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-      <polyline points="14 2 14 8 20 8"></polyline>
-      <line x1="16" y1="13" x2="8" y2="13"></line>
-      <line x1="16" y1="17" x2="8" y2="17"></line>
-      <polyline points="10 9 9 9 8 9"></polyline>
-    </svg>
-    Assignment
-  `;
-  assignmentBtn.addEventListener("click", () => {
-    downloadAssignment(item.title, item.assignmentText);
-  });
-  actions.appendChild(assignmentBtn);
-
-  const badge = document.createElement("span");
-  badge.className = `badge ${item.status}`;
-  badge.textContent = item.status === "preview" ? "Preview" : "Locked";
-  actions.appendChild(badge);
-
-  if (item.status === "preview") {
-    const playButton = document.createElement("button");
-    playButton.className = "play-btn primary";
-    playButton.type = "button";
-    playButton.textContent = "Watch Preview";
-    playButton.addEventListener("click", () => {
-      previewVideo.src = `https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1`;
-      document.getElementById("previewSection").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    actions.appendChild(playButton);
-  } else {
-    const lockButton = document.createElement("button");
-    lockButton.className = "play-btn";
-    lockButton.type = "button";
-    lockButton.innerHTML = `🔒 Locked`;
-    lockButton.addEventListener("click", () => {
-      openWhatsAppWithReferral(lockButton);
-    });
-    actions.appendChild(lockButton);
+  // Set copyright year
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
 
-  row.appendChild(main);
-  row.appendChild(actions);
+  // Initialize preview video
+  if (previewVideo && lectureData.length > 0) {
+    previewVideo.src = "https://www.youtube.com/embed/" + lectureData[0].videoId + "?rel=0&modestbranding=1";
+  }
 
-  return row;
-}
+  // Prompt for referral code
+  function promptReferral() {
+    var referralCode = prompt(
+      "💰 REFERRAL PROGRAM 💰\n\nGot a friend who referred you?\nEnter their WhatsApp number below and they earn ₦5,000!\n\n(Leave empty if you don't have a referral code)",
+      ""
+    );
+    return referralCode || "";
+  }
 
-function renderLectures() {
-  lectureList.innerHTML = "";
-  lectureData.forEach((item, index) => {
-    lectureList.appendChild(createLectureItem(item, index));
-  });
-}
+  // Open WhatsApp with referral
+  function openWhatsAppWithReferral() {
+    var referralCode = promptReferral();
+    var url = buildWhatsAppUrl(referralCode);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
-function initPreview() {
-  previewVideo.src = `https://www.youtube.com/embed/${lectureData[0].videoId}?rel=0&modestbranding=1`;
-}
+  // Set WhatsApp link handlers
+  var whatsappLinks = [whatsappTop, whatsappHero, whatsappBottom];
+  for (var i = 0; i < whatsappLinks.length; i++) {
+    (function(link) {
+      if (link) {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          openWhatsAppWithReferral();
+        });
+      }
+    })(whatsappLinks[i]);
+  }
 
-yearEl.textContent = new Date().getFullYear();
+  // Download assignment function
+  function downloadAssignment(lectureTitle, assignmentText) {
+    var content = "Lab Acad Gold Mastery\n" + lectureTitle + "\n\n" + assignmentText + "\n\n---\n© Lab Acad Gold Mastery";
+    var blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = lectureTitle.replace(/[^a-zA-Z0-9]/g, "_") + "_Assignment.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
 
-setWhatsAppLinks();
-renderLectures();
-initPreview();
+  // Create lecture item
+  function createLectureItem(item, index) {
+    var row = document.createElement("div");
+    row.className = "lecture-item" + (item.status === "locked" ? " locked-item" : "");
+
+    // Main section
+    var main = document.createElement("div");
+    main.className = "lecture-main";
+
+    var indexBox = document.createElement("div");
+    indexBox.className = "lecture-index";
+    indexBox.textContent = index + 1;
+
+    var textWrap = document.createElement("div");
+
+    var title = document.createElement("div");
+    title.className = "lecture-title";
+    title.textContent = item.title;
+
+    var desc = document.createElement("div");
+    desc.className = "lecture-meta";
+    desc.textContent = item.desc;
+
+    textWrap.appendChild(title);
+    textWrap.appendChild(desc);
+    main.appendChild(indexBox);
+    main.appendChild(textWrap);
+
+    // Actions section
+    var actions = document.createElement("div");
+    actions.className = "lecture-actions";
+
+    // Assignment button - always visible
+    var assignmentBtn = document.createElement("button");
+    assignmentBtn.className = "btn-assignment";
+    assignmentBtn.type = "button";
+    assignmentBtn.innerHTML = '📄 Assignment';
+    assignmentBtn.onclick = function() {
+      downloadAssignment(item.title, item.assignmentText);
+    };
+    actions.appendChild(assignmentBtn);
+
+    // Status badge
+    var badge = document.createElement("span");
+    badge.className = "badge " + item.status;
+    badge.textContent = item.status === "preview" ? "Preview" : "Locked";
+    actions.appendChild(badge);
+
+    // Preview or Lock button
+    if (item.status === "preview") {
+      var playButton = document.createElement("button");
+      playButton.className = "play-btn primary";
+      playButton.type = "button";
+      playButton.textContent = "▶ Watch Preview";
+      playButton.onclick = function() {
+        previewVideo.src = "https://www.youtube.com/embed/" + item.videoId + "?rel=0&modestbranding=1";
+        var previewSection = document.getElementById("previewSection");
+        if (previewSection) {
+          previewSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+      actions.appendChild(playButton);
+    } else {
+      var lockButton = document.createElement("button");
+      lockButton.className = "play-btn";
+      lockButton.type = "button";
+      lockButton.innerHTML = '🔒 Locked';
+      lockButton.onclick = function() {
+        openWhatsAppWithReferral();
+      };
+      actions.appendChild(lockButton);
+    }
+
+    row.appendChild(main);
+    row.appendChild(actions);
+
+    return row;
+  }
+
+  // Render all lectures
+  function renderLectures() {
+    if (!lectureList) {
+      console.error("lectureList element not found!");
+      return;
+    }
+    lectureList.innerHTML = "";
+    for (var i = 0; i < lectureData.length; i++) {
+      lectureList.appendChild(createLectureItem(lectureData[i], i));
+    }
+  }
+
+  // Render lectures
+  renderLectures();
+
+  console.log("Lab Acad Gold Mastery - Loaded Successfully");
+  console.log("Lectures rendered: " + lectureData.length);
+});
