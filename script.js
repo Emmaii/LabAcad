@@ -17,37 +17,43 @@ const lectureData = [
     title: "Finding Bias",
     desc: "Master the art of determining market direction and bias identification.",
     status: "preview",
-    videoId: "RraPVl3lPg0"
+    videoId: "RraPVl3lPg0",
+    assignmentUrl: "#"
   },
   {
     title: "The 3-Hour Trading Window That Eliminates Bad Trades",
     desc: "Learn the specific time window that filters out noise and improves probability.",
     status: "locked",
-    videoId: ""
+    videoId: "",
+    assignmentUrl: "#"
   },
   {
     title: "POI — Where to Buy",
     desc: "Identifying Points of Interest and optimal entry zones.",
     status: "locked",
-    videoId: ""
+    videoId: "",
+    assignmentUrl: "#"
   },
   {
     title: "From Setup to Profit — Real Trade Breakdown",
     desc: "Step-by-step analysis of a real trade from entry to exit.",
     status: "locked",
-    videoId: ""
+    videoId: "",
+    assignmentUrl: "#"
   },
   {
     title: "Everything Combined — This is how to Trade Daily",
     desc: "Bringing all concepts together into one comprehensive trading approach.",
     status: "locked",
-    videoId: ""
+    videoId: "",
+    assignmentUrl: "#"
   },
   {
     title: "Live Trading the Reversal Method",
     desc: "Watch a complete live trading session demonstrating the reversal method in real market conditions.",
     status: "locked",
-    videoId: ""
+    videoId: "",
+    assignmentUrl: "#"
   }
 ];
 
@@ -113,10 +119,27 @@ function createLectureItem(item, index) {
   const actions = document.createElement("div");
   actions.className = "lecture-actions";
 
+  // Assignment PDF button - always unlocked
+  const assignmentBtn = document.createElement("a");
+  assignmentBtn.className = "btn-assignment";
+  assignmentBtn.href = item.assignmentUrl;
+  assignmentBtn.target = "_blank";
+  assignmentBtn.rel = "noopener noreferrer";
+  assignmentBtn.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+    Assignment
+  `;
+  actions.appendChild(assignmentBtn);
+
   const badge = document.createElement("span");
   badge.className = `badge ${item.status}`;
   badge.textContent = item.status === "preview" ? "Preview" : "Locked";
-
   actions.appendChild(badge);
 
   if (item.status === "preview") {
@@ -133,7 +156,7 @@ function createLectureItem(item, index) {
     const lockButton = document.createElement("button");
     lockButton.className = "play-btn";
     lockButton.type = "button";
-    lockButton.innerHTML = `<span class="lock-icon">🔒</span> Locked`;
+    lockButton.innerHTML = `🔒 Locked`;
     lockButton.addEventListener("click", () => {
       openWhatsAppWithReferral(lockButton);
     });
