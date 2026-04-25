@@ -129,8 +129,7 @@ main {
 .info-card,
 .cta-box,
 .lecture-item,
-.track-record-card,
-.faq-card {
+.track-record-card {
   background: var(--card);
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow);
@@ -411,7 +410,7 @@ main {
 .section-heading h2,
 .cta-box h2 {
   margin: 0 0 10px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   letter-spacing: -0.02em;
   color: #fff;
 }
@@ -423,6 +422,11 @@ main {
   line-height: 1.75;
   margin: 0;
   font-size: 0.94rem;
+}
+
+.info-card strong {
+  color: #fff;
+  font-weight: 600;
 }
 
 /* ========== COURSE OUTLINE ========== */
@@ -500,7 +504,7 @@ main {
 .lecture-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -531,7 +535,7 @@ main {
   padding: 11px 14px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-family: inherit;
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
@@ -557,10 +561,10 @@ main {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
   color: #94c5fc;
-  padding: 11px 14px;
+  padding: 10px 14px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -585,53 +589,6 @@ main {
 .locked-item .lecture-index {
   background: rgba(255, 255, 255, 0.04);
   color: #cfd6e2;
-}
-
-/* ========== FAQ SECTION ========== */
-.faq-section {
-  margin-top: 28px;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.faq-card {
-  border-radius: var(--radius);
-  padding: 22px;
-}
-
-.faq-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.faq-card p {
-  color: var(--muted);
-  line-height: 1.75;
-  margin: 0;
-  font-size: 0.94rem;
-}
-
-.faq-card strong {
-  color: #fff;
-  font-weight: 600;
-}
-
-.inline-link {
-  color: #34aadc;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
-
-.inline-link:hover {
-  color: #5bc0f0;
 }
 
 /* ========== CTA SECTION ========== */
@@ -669,10 +626,6 @@ main {
   }
 
   .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .faq-grid {
     grid-template-columns: 1fr;
   }
 
