@@ -1,13 +1,15 @@
 (function() {
   var whatsappNumber = "2347031763615";
-  var baseMessage = "Hi I'm interested in learning how to trade Gold profitable and consistently";
+  var baseMessage = "Hi, I want access to the Gold Mastery course. How do I get started?";
 
   function buildWhatsAppUrl(referralCode) {
     referralCode = referralCode || "";
     var message = baseMessage;
+
     if (referralCode.trim() !== "") {
       message += "%0A%0AReferral Code: " + encodeURIComponent(referralCode.trim());
     }
+
     return "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
   }
 
@@ -57,7 +59,10 @@
   ];
 
   function promptReferral() {
-    var referralCode = prompt("💰 REFERRAL PROGRAM 💰\n\nGot a friend who referred you?\nEnter their WhatsApp number below and they earn ₦5,000!\n\n(Leave empty if you don't have a referral code)", "");
+    var referralCode = prompt(
+      "💰 REFERRAL PROGRAM 💰\n\nGot a friend who referred you?\nEnter their WhatsApp number below and they earn ₦5,000!\n\n(Leave empty if you don't have a referral code)",
+      ""
+    );
     return referralCode || "";
   }
 
@@ -83,6 +88,7 @@
   function renderLectures() {
     var lectureList = document.getElementById("lectureList");
     if (!lectureList) return;
+
     lectureList.innerHTML = "";
 
     for (var i = 0; i < lectureData.length; i++) {
@@ -100,12 +106,15 @@
       indexBox.textContent = index + 1;
 
       var textWrap = document.createElement("div");
+
       var title = document.createElement("div");
       title.className = "lecture-title";
       title.textContent = item.title;
+
       var desc = document.createElement("div");
       desc.className = "lecture-meta";
       desc.textContent = item.desc;
+
       textWrap.appendChild(title);
       textWrap.appendChild(desc);
       main.appendChild(indexBox);
@@ -114,39 +123,44 @@
       var actions = document.createElement("div");
       actions.className = "lecture-actions";
 
-      // Assignment button - icon + text
       var assignmentBtn = document.createElement("button");
       assignmentBtn.className = "btn-assignment";
       assignmentBtn.type = "button";
       assignmentBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Assignment';
-      assignmentBtn.onclick = (function(t, a) { return function() { downloadAssignment(t, a); }; })(item.title, item.assignmentText);
+      assignmentBtn.onclick = (function(t, a) {
+        return function() {
+          downloadAssignment(t, a);
+        };
+      })(item.title, item.assignmentText);
       actions.appendChild(assignmentBtn);
 
-      // Status badge
       var badge = document.createElement("span");
       badge.className = "badge-status " + item.status;
       badge.textContent = item.status === "preview" ? "Free" : "Locked";
       actions.appendChild(badge);
 
-      // Action button
       if (item.status === "preview") {
         var playBtn = document.createElement("button");
         playBtn.className = "btn-preview";
         playBtn.type = "button";
         playBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Watch';
-        playBtn.onclick = (function(vid) { return function() {
-          var pv = document.getElementById("previewVideo");
-          if (pv) pv.src = "https://www.youtube.com/embed/" + vid + "?rel=0&modestbranding=1";
-          var ps = document.getElementById("previewSection");
-          if (ps) ps.scrollIntoView({ behavior: "smooth", block: "start" });
-        }; })(item.videoId);
+        playBtn.onclick = (function(vid) {
+          return function() {
+            var pv = document.getElementById("previewVideo");
+            if (pv) pv.src = "https://www.youtube.com/embed/" + vid + "?rel=0&modestbranding=1";
+            var ps = document.getElementById("previewSection");
+            if (ps) ps.scrollIntoView({ behavior: "smooth", block: "start" });
+          };
+        })(item.videoId);
         actions.appendChild(playBtn);
       } else {
         var lockBtn = document.createElement("button");
         lockBtn.className = "btn-locked";
         lockBtn.type = "button";
         lockBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Unlock';
-        lockBtn.onclick = function() { openWhatsAppWithReferral(); };
+        lockBtn.onclick = function() {
+          openWhatsAppWithReferral();
+        };
         actions.appendChild(lockBtn);
       }
 
@@ -156,19 +170,50 @@
     }
   }
 
+  function typeText() {
+    var text = "Learn how to trade Gold profitably and consistently.";
+    var el = document.getElementById("typingText");
+    if (!el) return;
+
+    el.textContent = "";
+    var i = 0;
+
+    function typing() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(typing, 30);
+      }
+    }
+
+    typing();
+  }
+
   function init() {
     var wt = document.getElementById("whatsappTop");
     var wh = document.getElementById("whatsappHero");
     var wb = document.getElementById("whatsappBottom");
     var yr = document.getElementById("year");
+
     if (yr) yr.textContent = new Date().getFullYear();
+
     var links = [wt, wh, wb];
     for (var i = 0; i < links.length; i++) {
-      if (links[i]) links[i].addEventListener("click", function(e) { e.preventDefault(); openWhatsAppWithReferral(); });
+      if (links[i]) {
+        links[i].addEventListener("click", function(e) {
+          e.preventDefault();
+          openWhatsAppWithReferral();
+        });
+      }
     }
+
     renderLectures();
+    typeText();
   }
 
-  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); }
-  else { init(); }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
