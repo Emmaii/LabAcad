@@ -129,7 +129,8 @@ main {
 .info-card,
 .cta-box,
 .lecture-item,
-.track-record-card {
+.track-record-card,
+.faq-card {
   background: var(--card);
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow);
@@ -469,6 +470,7 @@ main {
   gap: 14px;
   position: relative;
   z-index: 1;
+  flex: 1;
 }
 
 .lecture-index {
@@ -501,6 +503,7 @@ main {
   gap: 12px;
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
 }
 
 .badge {
@@ -533,6 +536,7 @@ main {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .play-btn:hover {
@@ -549,6 +553,31 @@ main {
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }
 
+.btn-assignment {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: #94c5fc;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-assignment:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #b4d6ff;
+  transform: translateY(-1px);
+}
+
+.btn-assignment svg {
+  flex-shrink: 0;
+}
+
 .locked-item {
   opacity: 0.72;
 }
@@ -556,6 +585,53 @@ main {
 .locked-item .lecture-index {
   background: rgba(255, 255, 255, 0.04);
   color: #cfd6e2;
+}
+
+/* ========== FAQ SECTION ========== */
+.faq-section {
+  margin-top: 28px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.faq-card {
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.faq-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.faq-card p {
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.faq-card strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.inline-link {
+  color: #34aadc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.inline-link:hover {
+  color: #5bc0f0;
 }
 
 /* ========== CTA SECTION ========== */
@@ -593,6 +669,10 @@ main {
   }
 
   .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-grid {
     grid-template-columns: 1fr;
   }
 
