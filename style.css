@@ -186,6 +186,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 .signal-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; font-weight: 600; }
 .signal-direction { display: inline-block; padding: 5px 12px; border-radius: 999px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.04em; margin-bottom: 14px; }
 .signal-direction.long { background: rgba(45, 211, 111, 0.15); border: 1px solid rgba(45, 211, 111, 0.3); color: #5ce68c; }
+.signal-direction.short { background: rgba(231, 76, 60, 0.15); border: 1px solid rgba(231, 76, 60, 0.3); color: #e74c3c; }
 .signal-details { display: grid; gap: 10px; margin-bottom: 14px; }
 .signal-row { display: flex; justify-content: space-between; align-items: center; }
 .signal-key { color: var(--muted); font-size: 0.88rem; font-weight: 500; }
@@ -269,25 +270,27 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 }
 .btn-locked:active { transform: translateY(0); }
 
-/* Assignment Button - Clean Icon */
+/* Assignment Button - Icon + Text */
 .btn-assignment {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border-radius: 8px;
-  font-size: 0.85rem; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 8px;
+  font-weight: 600; font-size: 0.78rem; font-family: inherit;
   cursor: pointer;
   transition: all 0.25s ease; white-space: nowrap;
   background: transparent;
-  border: 1px solid rgba(148, 197, 252, 0.2);
-  color: #7aafe8;
+  border: 1px solid rgba(148, 197, 252, 0.25);
+  color: #8ab8f0;
+  letter-spacing: 0.01em;
 }
 .btn-assignment:hover {
-  border-color: rgba(148, 197, 252, 0.45);
+  border-color: rgba(148, 197, 252, 0.5);
   background: rgba(148, 197, 252, 0.08);
   color: #b4d6ff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(100, 160, 230, 0.15);
+  box-shadow: 0 4px 14px rgba(100, 160, 230, 0.2);
 }
 .btn-assignment:active { transform: translateY(0); }
+.btn-assignment svg { flex-shrink: 0; }
 
 /* Status Badge */
 .badge-status {
