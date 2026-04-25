@@ -172,15 +172,16 @@
 
   function typeText() {
     var text = "Learn how to trade Gold profitably and consistently.";
-    var el = document.getElementById("typingText");
+    var el = document.getElementById("heroTitle");
     if (!el) return;
 
+    var original = text;
     el.textContent = "";
     var i = 0;
 
     function typing() {
-      if (i < text.length) {
-        el.textContent += text.charAt(i);
+      if (i < original.length) {
+        el.textContent += original.charAt(i);
         i++;
         setTimeout(typing, 30);
       }
