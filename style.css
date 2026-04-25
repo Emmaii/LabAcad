@@ -397,7 +397,7 @@ main {
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
@@ -427,6 +427,17 @@ main {
 .info-card strong {
   color: #fff;
   font-weight: 600;
+}
+
+.inline-link {
+  color: #34aadc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.inline-link:hover {
+  color: #5bc0f0;
 }
 
 /* ========== COURSE OUTLINE ========== */
@@ -570,6 +581,8 @@ main {
   gap: 6px;
   transition: all 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .btn-assignment:hover {
