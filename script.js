@@ -114,7 +114,6 @@
       var actions = document.createElement("div");
       actions.className = "lecture-actions";
 
-      // Assignment button - icon + text
       var assignmentBtn = document.createElement("button");
       assignmentBtn.className = "btn-assignment";
       assignmentBtn.type = "button";
@@ -122,13 +121,11 @@
       assignmentBtn.onclick = (function(t, a) { return function() { downloadAssignment(t, a); }; })(item.title, item.assignmentText);
       actions.appendChild(assignmentBtn);
 
-      // Status badge
       var badge = document.createElement("span");
       badge.className = "badge-status " + item.status;
       badge.textContent = item.status === "preview" ? "Free" : "Locked";
       actions.appendChild(badge);
 
-      // Action button
       if (item.status === "preview") {
         var playBtn = document.createElement("button");
         playBtn.className = "btn-preview";
