@@ -48,7 +48,6 @@ a {
   z-index: -1;
 }
 
-/* ========== TOP BAR ========== */
 .topbar {
   max-width: var(--container);
   margin: 0 auto;
@@ -106,14 +105,12 @@ a {
   background: rgba(212, 175, 55, 0.18);
 }
 
-/* ========== MAIN LAYOUT ========== */
 main {
   max-width: var(--container);
   margin: 0 auto;
   padding: 28px 20px 56px;
 }
 
-/* ========== HERO SECTION ========== */
 .hero {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -169,7 +166,6 @@ main {
   margin: 0 0 26px;
 }
 
-/* ========== PRICE ROW ========== */
 .price-row {
   display: flex;
   flex-wrap: wrap;
@@ -216,7 +212,6 @@ main {
   font-weight: 800;
 }
 
-/* ========== BUTTONS ========== */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -265,7 +260,6 @@ main {
   min-width: 220px;
 }
 
-/* ========== HERO CARD (VIDEO PREVIEW) ========== */
 .hero-card {
   border-radius: calc(var(--radius) + 6px);
   padding: 18px;
@@ -313,7 +307,6 @@ main {
   font-size: 0.94rem;
 }
 
-/* ========== TRACK RECORD SECTION ========== */
 .track-record-section {
   margin-top: 28px;
 }
@@ -388,7 +381,6 @@ main {
   box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
 }
 
-/* ========== INFO CARDS ========== */
 .section {
   margin-top: 28px;
 }
@@ -431,14 +423,12 @@ main {
   color: #34aadc;
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: color 0.2s ease;
 }
 
 .inline-link:hover {
   color: #5bc0f0;
 }
 
-/* ========== COURSE OUTLINE ========== */
 .section-heading {
   margin-bottom: 18px;
 }
@@ -520,73 +510,147 @@ main {
 }
 
 .badge {
-  padding: 10px 14px;
+  padding: 8px 14px;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .badge.preview {
-  background: rgba(45, 211, 111, 0.12);
-  border: 1px solid rgba(45, 211, 111, 0.2);
-  color: #94efb8;
+  background: rgba(45, 211, 111, 0.15);
+  border: 1px solid rgba(45, 211, 111, 0.3);
+  color: #5ce68c;
 }
 
 .badge.locked {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--line);
-  color: #d0d6e0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9aa0b0;
 }
 
+/* ========== BEAUTIFUL BUTTONS ========== */
+
+/* Watch Preview Button - Gold Gradient with Glow */
 .play-btn {
   border: none;
   cursor: pointer;
-  padding: 11px 14px;
+  padding: 10px 18px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-family: inherit;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+/* Locked Button */
+.play-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9aa0b0;
 }
 
 .play-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #c0c6d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Watch Preview Button - Primary */
 .play-btn.primary {
-  background: linear-gradient(135deg, var(--gold), #a98517);
-  color: #131313;
+  background: linear-gradient(135deg, #d4af37 0%, #f0cc3e 30%, #c59b1f 70%, #a98517 100%);
+  background-size: 200% 200%;
+  color: #1a1a1a;
+  border: none;
+  font-weight: 700;
+  padding: 10px 20px;
+  animation: goldShimmer 3s ease infinite;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .play-btn.primary:hover {
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: goldShimmer 1.5s ease infinite;
 }
 
+.play-btn.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Assignment Button - Ice Blue with Frosted Effect */
 .btn-assignment {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--line);
-  color: #94c5fc;
-  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(148, 197, 252, 0.1) 0%, rgba(100, 160, 230, 0.06) 100%);
+  border: 1px solid rgba(148, 197, 252, 0.25);
+  color: #8ab8f0;
+  padding: 10px 16px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
+  gap: 7px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   cursor: pointer;
   font-family: inherit;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-assignment::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(148, 197, 252, 0.1), transparent);
+  transition: left 0.5s ease;
 }
 
 .btn-assignment:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: linear-gradient(135deg, rgba(148, 197, 252, 0.18) 0%, rgba(100, 160, 230, 0.12) 100%);
+  border-color: rgba(148, 197, 252, 0.45);
   color: #b4d6ff;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(100, 160, 230, 0.2), 0 0 0 1px rgba(148, 197, 252, 0.1);
+}
+
+.btn-assignment:hover::before {
+  left: 100%;
+}
+
+.btn-assignment:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(100, 160, 230, 0.15);
+}
+
+.btn-assignment svg {
+  flex-shrink: 0;
+  opacity: 0.85;
 }
 
 .locked-item {
@@ -598,7 +662,6 @@ main {
   color: #cfd6e2;
 }
 
-/* ========== CTA SECTION ========== */
 .cta-section {
   padding-bottom: 8px;
 }
@@ -613,7 +676,6 @@ main {
   margin-bottom: 18px;
 }
 
-/* ========== FOOTER ========== */
 .footer {
   max-width: var(--container);
   margin: 0 auto;
@@ -626,7 +688,6 @@ main {
   font-size: 0.9rem;
 }
 
-/* ========== RESPONSIVE ========== */
 @media (max-width: 920px) {
   .hero {
     grid-template-columns: 1fr;
