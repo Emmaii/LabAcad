@@ -60,7 +60,7 @@
   // ===== COUNTDOWN TIMER =====
   function startCountdown() {
     // Set the date 15 days from now
-    var countDownDate = new Date().getTime() + 15 * 24 * 60 * 60 * 1000;
+    var countDownDate = new Date("May 15, 2026 23:59:59").getTime()
 
     function updateTimer() {
       var now = new Date().getTime();
