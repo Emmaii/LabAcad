@@ -270,10 +270,7 @@ DELIVERABLES:
   }
 
   function init() {
-    var whatsappButtons = document.querySelectorAll(
-      "#whatsappTop, #whatsappHero, #whatsappExecution, #whatsappBottom, #whatsappBeginner"
-    );
-
+    var whatsappButtons = document.querySelectorAll("#whatsappTop, #whatsappExecution");
     for (var i = 0; i < whatsappButtons.length; i++) {
       whatsappButtons[i].addEventListener("click", function(e) {
         e.preventDefault();
