@@ -1,6 +1,7 @@
 (function() {
   var whatsappNumber = "2347031763615";
-  var baseMessage = "Hi, I want free access to the Gold Mastery course. Is it still available?";
+  // Updated message: asks about the Lab, not the free course
+  var baseMessage = "Hi, I'm interested in the Laboratory Room. How can I get access?";
 
   function buildWhatsAppUrl() {
     return "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(baseMessage);
@@ -89,7 +90,7 @@
         </div>
         <div class="lecture-actions">
           <button class="btn-assignment" data-assignment>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -99,7 +100,7 @@
           </button>
           <span class="badge-status preview">Free</span>
           <button class="btn-watch" data-watch>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <svg viewBox="0 0 24 24" fill="currentColor">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
             Watch
