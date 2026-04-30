@@ -77,7 +77,6 @@ a { text-decoration: none; color: inherit; }
 
 main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 
-/* Single column hero – no preview card */
 .hero-single {
   display: block;
   margin-top: 14px;
@@ -105,11 +104,6 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-}
-
-.hero-content:hover {
-  transform: none;
-  box-shadow: var(--shadow);
 }
 
 .hero-card:hover,
@@ -384,6 +378,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 }
 
 .beginner-list li { margin-bottom: 6px; }
+
 .beginner-list a {
   color: #8ab8f0;
   text-decoration: underline;
@@ -396,6 +391,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  justify-content: center;
 }
 
 /* TRACK RECORD */
@@ -657,7 +653,6 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   flex-shrink: 0;
 }
 
-/* De‑uglified lecture buttons */
 .btn-watch {
   display: inline-flex;
   align-items: center;
