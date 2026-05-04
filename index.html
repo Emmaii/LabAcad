@@ -32,7 +32,7 @@
     <section class="hero hero-single" id="hero">
       <div class="hero-content">
         <div class="pill">🎓 Free Education • 15 Days Access</div>
-        <h1 id="heroTitle">Learn how to trade Gold profitably and consistently.</h1>
+        <h1 id="heroTitle"><span id="heroTitleText"></span></h1>
         <p class="hero-text">
           All 6 lectures + assignments unlocked — completely free. Learn the strategy, watch the demonstrations, download the assignments.
         </p>
@@ -80,7 +80,9 @@
         </div>
         <div class="chart-container">
           <div class="tradingview-widget-container" id="tradingviewChart">
-            <div id="tradingview_xauusd"></div>
+            <div id="tradingview_xauusd">
+              <div class="tv-fallback">Loading chart…</div>
+            </div>
           </div>
         </div>
       </div>
@@ -224,24 +226,26 @@
       <div class="lecture-list" id="lectureList"></div>
     </section>
 
-    <!-- LOCKED LABORATORY ROOM -->
+    <!-- LOCKED LABORATORY ROOM — UPDATED -->
     <section class="section execution-room-section">
       <div class="execution-room-card locked">
         <div class="execution-room-overlay">
           <div class="lock-icon-large">🔒</div>
           <h2>Laboratory Room</h2>
           <p>
-            Live market analysis, and direct access to our laboratory. This is where we execute —
-            and cook new formulas for other markets.
+            Live market analysis and direct access to our laboratory. This is where we execute with
+            <strong>fundamentals</strong> and not just our good technicals — and trade other markets
+            with a different technical formula.
           </p>
           <div class="execution-features">
             <div class="exec-feature"><span class="feature-icon">📡</span><span>Live Execution Signals</span></div>
             <div class="exec-feature"><span class="feature-icon">📊</span><span>Proprietary Firm Guidance</span></div>
+            <div class="exec-feature"><span class="feature-icon">📈</span><span>Fundamental Analysis</span></div>
           </div>
           <a class="btn btn-primary pulse-btn btn-large" id="whatsappExecution" href="#" target="_blank" rel="noopener noreferrer">
-            Request Access to The Laboratory Room
+            Request Access to The Laboratory Room for <span class="btn-price-gold">$6/month</span>
           </a>
-          <div class="execution-note">The Lab is for testing and executing. Education is free — execution requires approval.</div>
+          <div class="execution-note">Education is free. Execution access is $6/month.</div>
         </div>
       </div>
     </section>
