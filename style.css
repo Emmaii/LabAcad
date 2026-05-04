@@ -40,6 +40,7 @@ a { text-decoration: none; color: inherit; }
   z-index: -1;
 }
 
+/* ── TOPBAR ── */
 .topbar {
   max-width: var(--container);
   margin: 0 auto;
@@ -75,17 +76,14 @@ a { text-decoration: none; color: inherit; }
 }
 .top-cta:hover { transform: translateY(-1px); background: rgba(212, 175, 55, 0.18); }
 
+/* ── MAIN ── */
 main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 
-.hero-single {
-  display: block;
-  margin-top: 14px;
-}
+.hero-single { display: block; margin-top: 14px; }
 
+/* ── CARD BASE ── */
 .hero-content,
-.hero-card,
 .info-card,
-.cta-box,
 .lecture-item,
 .track-record-card,
 .chart-education-card,
@@ -106,17 +104,18 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   text-align: center;
 }
 
-.hero-card:hover,
+/* Cleaned-up hover: only classes that exist */
 .info-card:hover,
-.cta-box:hover,
 .lecture-item:hover,
 .track-record-card:hover,
 .chart-education-card:hover,
+.execution-room-card:hover,
 .beginner-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
 }
 
+/* ── PILL / BADGES ── */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -131,6 +130,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   margin-bottom: 18px;
 }
 
+/* ── HERO ── */
 .hero h1 {
   font-size: clamp(2.1rem, 4vw, 3.8rem);
   line-height: 1.08;
@@ -138,6 +138,18 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   letter-spacing: -0.04em;
   color: #fff;
   min-height: 1.2em;
+}
+
+/* Typing cursor */
+#heroTitleText {
+  border-right: 3px solid #d4af37;
+  padding-right: 4px;
+  animation: blink-cursor 0.7s infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { border-right-color: #d4af37; }
+  50% { border-right-color: transparent; }
 }
 
 .hero-text {
@@ -148,7 +160,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   margin: 0 auto 22px;
 }
 
-/* COUNTDOWN */
+/* ── COUNTDOWN ── */
 .countdown-container {
   margin: 0 auto 22px;
   max-width: 360px;
@@ -197,6 +209,14 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   letter-spacing: 0.05em;
 }
 
+.expired {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  text-align: center;
+}
+
+/* ── PRICE ROW ── */
 .price-row {
   display: flex;
   flex-wrap: wrap;
@@ -245,6 +265,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   font-size: 1.4rem;
 }
 
+/* ── BUTTONS ── */
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 8px; }
 
 .btn {
@@ -286,7 +307,18 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
-/* EDUCATIONAL CHART SECTION */
+/* Price badge inside button */
+.btn-price-gold {
+  background: linear-gradient(to right, #f7e05e, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
+}
+
+/* ── CHART EDUCATION ── */
 .chart-education-section { margin-top: 28px; }
 
 .chart-education-card {
@@ -329,14 +361,22 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--line);
-  margin-bottom: 0;
   background: #000;
 }
 
 .tradingview-widget-container { width: 100%; height: 400px; }
 .tradingview-widget-container > div { width: 100% !important; height: 400px !important; }
 
-/* BEGINNER SECTION */
+.tv-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ── BEGINNER SECTION ── */
 .beginner-section { margin-top: 28px; }
 
 .beginner-grid {
@@ -394,7 +434,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   justify-content: center;
 }
 
-/* TRACK RECORD */
+/* ── TRACK RECORD ── */
 .track-record-section { margin-top: 28px; }
 
 .track-record-card {
@@ -465,7 +505,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
 }
 
-/* EXECUTION ROOM */
+/* ── EXECUTION ROOM ── */
 .execution-room-section { margin-top: 28px; }
 
 .execution-room-card {
@@ -486,6 +526,11 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   pointer-events: none;
 }
 
+.execution-room-overlay {
+  position: relative;
+  z-index: 1;
+}
+
 .lock-icon-large { font-size: 3rem; margin-bottom: 12px; }
 
 .execution-room-card h2 {
@@ -498,9 +543,14 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 .execution-room-card p {
   color: var(--muted);
   margin: 0 auto 22px;
-  max-width: 48ch;
+  max-width: 52ch;
   line-height: 1.7;
   font-size: 0.95rem;
+}
+
+.execution-room-card p strong {
+  color: #f7e05e;
+  font-weight: 600;
 }
 
 .execution-features {
@@ -509,7 +559,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   justify-content: center;
   gap: 12px;
   margin-bottom: 22px;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -524,17 +574,26 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   border-radius: 10px;
   font-size: 0.85rem;
   color: #d0d5e0;
+  transition: all 0.2s ease;
+}
+
+.exec-feature:hover {
+  border-color: var(--gold-soft);
+  background: rgba(212, 175, 55, 0.06);
 }
 
 .feature-icon { font-size: 1.1rem; }
 
 .execution-note {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 0.8rem;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  color: #cbd5e1;
+  font-size: 0.82rem;
   font-style: italic;
 }
 
+/* ── SECTIONS ── */
 .section { margin-top: 28px; }
 
 .info-grid {
@@ -549,8 +608,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 }
 
 .info-card h2,
-.section-heading h2,
-.cta-box h2 {
+.section-heading h2 {
   margin: 0 0 10px;
   font-size: 1.2rem;
   letter-spacing: -0.02em;
@@ -558,8 +616,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 }
 
 .info-card p,
-.section-sub,
-.cta-box p {
+.section-sub {
   color: var(--muted);
   line-height: 1.75;
   margin: 0;
@@ -587,7 +644,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   font-weight: 700;
 }
 
-/* LECTURES */
+/* ── LECTURES ── */
 .lecture-list { display: grid; gap: 12px; }
 
 .lecture-item {
@@ -730,6 +787,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
   color: #5ce68c;
 }
 
+/* ── FOOTER ── */
 .footer {
   max-width: var(--container);
   margin: 0 auto;
@@ -739,6 +797,7 @@ main { max-width: var(--container); margin: 0 auto; padding: 28px 20px 56px; }
 
 .footer p { color: var(--muted); font-size: 0.9rem; }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 920px) {
   .info-grid { grid-template-columns: 1fr; }
   .beginner-grid { grid-template-columns: 1fr; }
