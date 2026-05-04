@@ -206,8 +206,13 @@ DELIVERABLES:
     });
   }
 
+  /* ── COUNTDOWN: 15 days from page load ── */
   function startCountdown() {
-    var end = new Date("May 15, 2026 23:59:59").getTime();
+    var countdownEl = document.getElementById("countdown");
+    if (!countdownEl) return;
+
+    // 15 days from now
+    var end = new Date().getTime() + 15 * 24 * 60 * 60 * 1000;
 
     var timer = setInterval(function() {
       var now = new Date().getTime();
@@ -215,10 +220,7 @@ DELIVERABLES:
 
       if (dist < 0) {
         clearInterval(timer);
-        var countdown = document.getElementById("countdown");
-        if (countdown) {
-          countdown.innerHTML = '<div class="expired">Offer Expired</div>';
-        }
+        countdownEl.innerHTML = '<div class="expired">Offer Expired</div>';
         return;
       }
 
@@ -228,21 +230,19 @@ DELIVERABLES:
       var secondsEl = document.getElementById("seconds");
 
       if (daysEl) daysEl.textContent = Math.floor(dist / (1000 * 60 * 60 * 24)).toString().padStart(2, "0");
-      if (hoursEl) hoursEl.textContent = Math.floor((dist % (86400000)) / 3600000).toString().padStart(2, "0");
+      if (hoursEl) hoursEl.textContent = Math.floor((dist % 86400000) / 3600000).toString().padStart(2, "0");
       if (minutesEl) minutesEl.textContent = Math.floor((dist % 3600000) / 60000).toString().padStart(2, "0");
       if (secondsEl) secondsEl.textContent = Math.floor((dist % 60000) / 1000).toString().padStart(2, "0");
     }, 1000);
   }
 
+  /* ── TYPEWRITER ── */
   function typeText() {
-    var el = document.getElementById("heroTitle");
+    var el = document.getElementById("heroTitleText");
     if (!el) return;
 
     var text = "Learn how to trade Gold profitably and consistently.";
     el.textContent = "";
-    el.style.borderRight = "3px solid #d4af37";
-    el.style.display = "inline-block";
-    el.style.paddingRight = "4px";
 
     var i = 0;
     function type() {
@@ -250,33 +250,24 @@ DELIVERABLES:
         el.textContent += text.charAt(i);
         i++;
         setTimeout(type, 35);
-      } else {
-        setInterval(function() {
-          el.style.borderRightColor = el.style.borderRightColor === "transparent" ? "#d4af37" : "transparent";
-        }, 500);
       }
     }
 
     type();
   }
 
-  function init() {
-    var whatsappButtons = document.querySelectorAll("#whatsappTop, #whatsappExecution");
-    for (var i = 0; i < whatsappButtons.length; i++) {
-      whatsappButtons[i].addEventListener("click", function(e) {
-        e.preventDefault();
-        openWhatsApp();
-      });
+  /* ── TRADINGVIEW ── */
+  function initTradingView() {
+    var container = document.getElementById("tradingview_xauusd");
+    if (!container) return;
+
+    if (typeof TradingView === "undefined") {
+      // Fallback if tv.js fails to load
+      container.innerHTML = '<div class="tv-fallback">📊 Chart will load here. <a href="https://www.tradingview.com" target="_blank" rel="noopener" style="color:#8ab8f0;">Open TradingView</a></div>';
+      return;
     }
 
-    var yearSpan = document.getElementById("year");
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    renderLectures();
-    startCountdown();
-    typeText();
-
-    if (typeof TradingView !== "undefined") {
+    try {
       new TradingView.widget({
         container_id: "tradingview_xauusd",
         width: "100%",
@@ -296,7 +287,28 @@ DELIVERABLES:
         popup_width: "1000",
         popup_height: "650"
       });
+    } catch (e) {
+      container.innerHTML = '<div class="tv-fallback">⚠️ Chart could not be loaded. <a href="https://www.tradingview.com" target="_blank" rel="noopener" style="color:#8ab8f0;">Open TradingView</a></div>';
     }
+  }
+
+  /* ── INIT ── */
+  function init() {
+    var whatsappButtons = document.querySelectorAll("#whatsappTop, #whatsappExecution");
+    for (var i = 0; i < whatsappButtons.length; i++) {
+      whatsappButtons[i].addEventListener("click", function(e) {
+        e.preventDefault();
+        openWhatsApp();
+      });
+    }
+
+    var yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    renderLectures();
+    startCountdown();
+    typeText();
+    initTradingView();
   }
 
   if (document.readyState === "loading") {
